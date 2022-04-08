@@ -2,13 +2,21 @@
   "name": "web",
   "version": "1.0.0",
   "description": "Study app",
-  "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js",
+    "prestart": "parcel build ./public/index.html",
+    "dev": "parcel serve ./public/index.html"
   },
   "author": "Jasper Kilkelly Thieme",
   "license": "ISC",
   "dependencies": {
     "express": "^4.17.3"
+  },
+  "devDependencies": {
+    "@parcel/transformer-sass": "^2.0.0-rc.0",
+    "autoprefixer": "^10.4.4",
+    "parcel": "^2.0.0-rc.0",
+    "postcss": "^8.4.12"
   }
 }
