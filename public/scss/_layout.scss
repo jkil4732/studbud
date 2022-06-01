@@ -1,0 +1,53 @@
+.container {  display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: 206.4px 2.3fr 0.1px;
+    gap: 0px 0px;
+    grid-auto-flow: row;
+    grid-template-areas:
+      "time"
+      "task"
+      ".";
+  }
+  
+  .time {  display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: 1fr 1fr 1fr;
+    gap: 0px 0px;
+    grid-auto-flow: row;
+    grid-template-areas:
+      "left-float timer task-list"
+      "left-float timer task-list"
+      "left-float timer task-list";
+    grid-area: time;
+  }
+  
+  .timer { grid-area: timer; }
+  
+  .task-list { grid-area: task-list; }
+  
+  .left-float { grid-area: left-float; }
+  
+  .task {  display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: 0.7fr 1.3fr 1fr;
+    gap: 0px 0px;
+    grid-auto-flow: row;
+    grid-template-areas:
+      "task-header task-header task-header"
+      "nav col-1 col-2"
+      "nav col-1 col-2";
+    grid-area: task;
+  }
+  
+  .nav { grid-area: nav; }
+  
+  .col-1 { grid-area: col-1; }
+  
+  .col-2 { grid-area: col-2; }
+  
+  .task-header { grid-area: task-header; }
+
+/* */
+
+
+  

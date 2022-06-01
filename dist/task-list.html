@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+    <title>Task Form</title>
+    <link href="/index.6ed2f507.css" rel="stylesheet" type="text/css">
+  </head>
+  <body>
+    <h2>Task</h2>
+
+    <form id="taskForm">
+      <label for="task">Task:</label>
+      <input type="text" id="taskInput" name="task" value="">
+
+      <!-- Date input -->
+      <label for="dueDate">Due Date:</label>
+      <input type="date" id="dueDateInput" name="dueDate" value="">
+
+      <!-- Completion Time -->
+      <label for="estimatedTime">Estimated Completion Time</label>
+      <input type="number" id="estimatedTimeInput" name="estimatedTime" value="">
+
+      <!-- Priority -->
+      <label for="priority">Task Priority:</label>
+      <select id="priorityInput" name="priority">
+        <option value="">Select one</option>
+        <option value="low">Low</option>
+        <option value="medium">Medium</option>
+        <option value="high">High</option>
+      </select>
+
+      <br>
+
+      <button type="submit">Submit</button>
+    </form>
+    <div id="tasklist">
+      <p id="emptylist">You have not added a task list yet</p>
+      <ul></ul>
+    </div>
+
+    <script src="/timer.737c1fa2.js"></script>
+  </body>
+</html>

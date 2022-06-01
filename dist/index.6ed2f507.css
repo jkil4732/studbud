@@ -1,2 +1,67 @@
+.container {  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: 206.4px 2.3fr 0.1px;
+  gap: 0px 0px;
+  grid-auto-flow: row;
+  grid-template-areas:
+    "focus-section"
+    "task-section"
+    ".";
+}
 
+.focus-section {  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-rows: 0fr 1fr;
+  gap: 0px 0px;
+  grid-auto-flow: row;
+  grid-template-areas:
+    ". . ."
+    "left-float timer tasks-list";
+  grid-area: time;
+}
+
+.left-float { grid-area: left-float; }
+
+.timer { grid-area: timer; }
+
+.tasks-list { grid-area: tasks-list; }
+
+.task-section {  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-rows: 0.5fr 1.5fr;
+  gap: 0px 0px;
+  grid-auto-flow: row;
+  grid-template-areas:
+    "task-header task-header task-header"
+    "Nav col-1 col-2";
+  grid-area: task;
+}
+
+.Nav { grid-area: Nav; }
+
+.col-1 { grid-area: col-1; }
+
+.col-2 { grid-area: col-2; }
+
+.task-header { grid-area: task-header; }
+
+/* */
+
+.container {
+  height: 100%;
+}
+
+.focus-section {
+  width: 100%;
+  height: 50%;
+
+  color: blue;
+}
+
+.task-section {
+  width: 100%;
+  height: 50%;
+
+  background-color: red;
+}
 /*# sourceMappingURL=index.6ed2f507.css.map */

@@ -1,1 +1,0 @@
-{"mappings":"ACAQ,gKAAA;AAER;EACI,oCAAA;A;AAGJ;EACI,cAAA;EACA,UAAA;A","sources":["public/scss/main.scss","public/scss/_typography.scss"],"sourcesContent":["@import \"typography.scss\";",null],"names":[],"version":3,"file":"index.b2a7a68e.css.map","sourceRoot":"/__parcel_source_root/"}
