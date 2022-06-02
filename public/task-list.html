@@ -7,43 +7,94 @@
     <link href="style.css" rel="stylesheet" type="text/css" />
   </head>
   <body>
-    <h2>Task</h2>
 
-    <form id="taskForm">
-      <label for="task">Task:</label>
-      <input type="text" id="taskInput" name="task" value="" />
+    <div class="task-form-container">
+      <h2>Add New Task</h2>
 
-      <!-- Date input -->
-      <label for="dueDate">Due Date:</label>
-      <input type="date" id="dueDateInput" name="dueDate" value="" />
+      <form id="taskForm">
+        <label for="task">Task:</label>
+        <input type="text" id="taskInput" name="task" value="" />
 
-      <!-- Completion Time -->
-      <label for="estimatedTime">Estimated Completion Time</label>
-      <input
-        type="number"
-        id="estimatedTimeInput"
-        name="estimatedTime"
-        value=""
-      />
+        <!-- Date input -->
+        <label for="dueDate">Due Date:</label>
+        <input type="date" id="dueDateInput" name="dueDate" value="" />
 
-      <!-- Priority -->
-      <label for="priority">Task Priority:</label>
-      <select id="priorityInput" name="priority">
-        <option value="">Select one</option>
-        <option value="low">Low</option>
-        <option value="medium">Medium</option>
-        <option value="high">High</option>
-      </select>
+        <!-- Completion Time -->
+        <label for="estimatedTime">Estimated Completion Time</label>
+        <input
+          type="number"
+          id="estimatedTimeInput"
+          name="estimatedTime"
+          value=""
+        />
 
-      <br />
+        <!-- Notes -->
+        <label for="notes">Task Notes</label>
+        <input type="text" id="notesInput" name="notes" value="" />
 
-      <button type="submit">Submit</button>
-    </form>
+        <br />
+
+        <button type="submit">Submit</button>
+      </form>
+    </div>
+      
+    <!--Task List -->
+
     <div id="tasklist">
       <p id="emptylist">You have not added a task list yet</p>
-      <ul></ul>
+      <ul class="task-list">
+    
+        <li class="task-card">
+          <div class="main-task-container">
+            <div class="col-1">
+              <button class="collapsible" id="addSubtask"><img src="../assets/images/arrow-down-sign-to-navigate.png" height="15px"></button>
+              <button class="complete-button"></button>
+              <h3>Task Name</h3>
+            </div>
+            <div class="col-2">
+              <p>4h</p>
+            </div>
+          </div>
+          <!-- <p>Due June 23</p> -->
+          <div class="content" id="placeHolder">
+            <div class="subtask-container">
+              <div class="row">
+                <div class="col-1">
+                  <button class="complete-button"></button>
+                  <h3>Task Name</h3>
+                </div>
+                <div class="col-2">
+                  <p>2h</p>
+                </div>
+              </div>
+            </div>  
+            <div class="subtask-container">
+              <div class="row">
+                <div class="col-1">
+                  <button class="complete-button"></button>
+                  <h3>Task Name</h3>
+                </div>
+                <div class="col-2">
+                  <p>2h</p>
+                </div>          
+              </div>
+            </div>
+            <div class="subtask-container">
+              <div class="row">
+                <div class="col-1">
+                  <img src="../assets/images/plus.png" width="13px">
+                  <label for="subtask"></label>
+                  <input type="text" id="subtaskInput" name="subtask" placeholder="add subtask">
+                </div>
+              </div>          
+            </div>
+          </div>
+        </li>
+    
+      </ul>
     </div>
 
     <script src="script.js"></script>
+
   </body>
 </html>

@@ -159,7 +159,10 @@ function complete() {
 
 //--- STOP WATCH ---//
 
-//--- Tasking ---//
+
+
+
+//--- TASKING ---//
 
 
 const form = document.getElementById("taskForm");
@@ -167,9 +170,8 @@ const button = document.querySelector("#taskForm > button");
 
 var taskInput = document.getElementById("taskInput");
 var dueDateInput = document.getElementById("dueDateInput");
-var completionTimeInput = document.getElementById("completionTimeInput");
 var estimatedTimeInput = document.getElementById("estimatedTimeInput");
-var priorityInput = document.getElementById("priorityInput");
+var notesInput = document.getElementById("notesInput");
 
 var tasklist = document.querySelector("#tasklist > ul");
 
@@ -177,21 +179,21 @@ form.addEventListener("submit", function(event) {
   event.preventDefault();
   let task = taskInput.value;
   let dueDate = dueDateInput.value;
-  let priorityRating = priorityInput.options[priorityInput.selectedIndex].value;
+  let taskNotes = notesInput.value;
   let estimatedTime = estimatedTimeInput.value;
 
-  addTask(task, dueDate, estimatedTime, priorityRating);
+  addTask(task, dueDate, estimatedTime, taskNotes);
 });
 
-function addTask(name, due, time, priority) {
+function addTask(name, due, time, notes) {
   console.log("adding task");
   let d = new Date();
-  let dateCreated = d.getFullYear();
+  let dateCreated = [d.getFullYear(), d.getMonth(), d.getFullMonth];
   let task = {
     name: name,
     due: due,
     time: time,
-    priority: priority,
+    notes: notes,
     dateCreated: dateCreated,
   };
   taskListArray.push(task);
@@ -200,6 +202,7 @@ function addTask(name, due, time, priority) {
 };
 
 let taskListArray = [];
+let taskCompletedArray = [];
 
 function renderTask(task) {
 
@@ -220,9 +223,26 @@ function renderTask(task) {
   // Event Listeners for DOM elements
   delButton.addEventListener("click", function(event) {
     event.preventDefault();
+    taskCompletedArray.push(task);
     item.remove();
   })
 
   //clear the input form
   form.reset();
+}
+
+// Task Card Component
+var coll = document.getElementsByClassName("collapsible");
+var i;
+
+for (i = 0; i < coll.length; i++) {
+  coll[i].addEventListener("click", function() {
+    this.classList.toggle("active");
+    var content = document.getElementById("placeHolder");
+    if (content.style.display === "block") {
+      content.style.display = "none";
+    } else {
+      content.style.display = "block";
+    }
+  });
 }

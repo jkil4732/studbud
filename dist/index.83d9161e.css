@@ -1,0 +1,147 @@
+@import "https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap";
+html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, b, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, article, aside, canvas, details, embed, figure, figcaption, footer, header, hgroup, menu, nav, output, ruby, section, summary, time, mark, audio, video {
+  font-size: 100%;
+  font: inherit;
+  vertical-align: baseline;
+  border: 0;
+  margin: 0;
+  padding: 0;
+}
+
+article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, section {
+  display: block;
+}
+
+body {
+  line-height: 1;
+}
+
+ol, ul {
+  list-style: none;
+}
+
+blockquote, q {
+  quotes: none;
+}
+
+blockquote:before, blockquote:after, q:before, q:after {
+  content: "";
+  content: none;
+}
+
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+h1, h2, h3, h4, p {
+  color: #303030;
+  font-family: Inter, sans-serif;
+}
+
+h1 {
+  font-size: 30px;
+}
+
+h3 {
+  font-size: 18px;
+}
+
+p {
+  font-size: 14px;
+}
+
+html, body {
+  height: 100%;
+  width: 100%;
+}
+
+.task-list {
+  max-width: 50%;
+  background-color: #fff;
+  margin: auto;
+  padding: 50px;
+}
+
+.task-card {
+  width: 100%;
+  border: 2px solid #303030;
+  border-radius: 15px;
+  padding: 10px;
+}
+
+.main-task-container, .subtask-container .row {
+  height: 25px;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10px;
+  display: flex;
+}
+
+.main-task-container .col-1, .subtask-container .col-1 {
+  justify-content: start;
+  align-items: center;
+  display: flex;
+}
+
+.complete-button {
+  height: 20px;
+  width: 20px;
+  cursor: pointer;
+  background-color: #fff;
+  border: 1.5px solid #555;
+  border-radius: 10px;
+  margin-right: 10px;
+}
+
+.complete-button:hover {
+  background-color: #dbdbdb;
+}
+
+.complete-button:active {
+  background-color: #7a90ff;
+}
+
+.main-task-container .col-1 button:first-child {
+  cursor: pointer;
+  background-color: #fff;
+  border: 0 solid #555;
+  justify-content: start;
+  align-items: center;
+  margin-right: 10px;
+  padding: 0;
+  display: flex;
+}
+
+.subtask-container .row {
+  margin-left: 25%;
+}
+
+.subtask-container .col-1 img {
+  margin-left: 5px;
+  margin-right: 10px;
+}
+
+.subtask-container .col-1 input {
+  border: none;
+  border-bottom: 1px solid #555;
+  outline: none;
+  padding: 2px 5px 2px 0;
+}
+
+.subtask-container .col-1 input:focus {
+  border: none;
+  border-bottom: 2px solid #7a90ff;
+  padding: 2px 5px 2px 0;
+}
+
+.subtask-container h3, .subtask-container p {
+  color: #474747;
+}
+
+.subtask-container .content {
+  display: none;
+  overflow: hidden;
+}
+
+/*# sourceMappingURL=index.83d9161e.css.map */
