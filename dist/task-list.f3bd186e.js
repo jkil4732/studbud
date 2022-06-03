@@ -180,9 +180,10 @@ function renderTask(task) {
     item.classList.add("task-card");
     item.innerHTML = `<div class="main-task-container" id="main-task-container` + task.name + `">
             <div class="col-1">
-              <button class="collapsible" id="collapsible` + task.name + `"><div class="chevro-image"></div></button>
+              <button class="collapsible" id="collapsible` + task.name + `"><div class="chevron-image"></div></button>
               <button class="complete-button" id="task-complete` + task.name + `"></button>
               <h3>` + task.name + `</h3>
+              <button class="editTask-button" id="editTask` + task.name + `"><div class="edit-image"></div></button>
             </div>
             <div class="col-2">
               <p>4h</p>

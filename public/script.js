@@ -161,7 +161,7 @@ function complete() {
 
 
 //--- TASKING ---//
-
+// Modal from https://rmodal.js.org/
 window.onload = function() {
   var modal = new RModal(document.getElementById('modal'), {
       //content: 'Abracadabra'
@@ -262,12 +262,12 @@ function renderTask(task) {
 
   item.innerHTML = `<div class="main-task-container" id="main-task-container` + task.name + `">
             <div class="col-1">
-              <button class="collapsible" id="collapsible` + task.name + `"><div class="chevro-image"></div></button>
+              <button class="collapsible" id="collapsible` + task.name + `"></button>
               <button class="complete-button" id="task-complete` + task.name + `"></button>
               <h3>` + task.name + `</h3>
             </div>
             <div class="col-2">
-              <p>4h</p>
+              <button class="edit-task-button" id="editTask` + task.name + `"></button>
             </div>
           </div>
           <!-- <p>Due June 23</p> -->
@@ -299,7 +299,7 @@ function renderTask(task) {
 
   // Event Listeners for DOM elements
 
-  var taskCard = document.getElementById("main-task-container" + task.name).addEventListener("click", function(event) {
+  var taskCard = document.getElementById("editTask" + task.name).addEventListener("click", function(event) {
     event.preventDefault();
     console.log("modal open");
     modal.open();

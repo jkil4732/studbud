@@ -1,19 +1,19 @@
 //--- Pomodoro Timer ---//
 //https://www.youtube.com/watch?v=a7Kt7S_4HOA
-let startTime = 1;
-let breakTime = 2;
+let startTime = 25;
+let breakTime = 5;
 let minutes = startTime;
 let seconds = 0;
 let minutes_interval;
 let seconds_interval;
 let timerPlay = false;
 let breakToggle = false;
-let setIterations = 1;
+let setIterations = 3;
 let numIterations = 0;
 function template() {
     document.getElementById("minutes").innerHTML = minutes;
     document.getElementById("seconds").innerHTML = "0" + seconds.toString();
-    document.getElementById("iteration").innerHTML = numIterations;
+    document.getElementById("iteration").innerHTML = numIterations + " of " + setIterations + " rounds";
 }
 //Control - Start timer
 function start() {
@@ -95,6 +95,7 @@ function complete() {
 }
 //--- STOP WATCH ---//
 //--- TASKING ---//
+// Modal from https://rmodal.js.org/
 window.onload = function() {
     var modal = new RModal(document.getElementById("modal"), {
         //content: 'Abracadabra'
@@ -135,7 +136,6 @@ taskForm.addEventListener("submit", function(event) {
 });
 //Create main task
 function addTask(name, due, time, notes) {
-    console.log("adding task");
     let d = new Date();
     let dateCreated = [
         d.getFullYear(),
@@ -151,7 +151,6 @@ function addTask(name, due, time, notes) {
         subtasks: []
     };
     taskListArray.push(task);
-    console.log(task);
     renderTask(task);
 }
 let taskListArray = [];
@@ -159,7 +158,7 @@ let taskCompletedArray = [];
 for (task of taskListArray)renderTask(task);
 //Create subtask
 function addSubtask(name, parentTask) {
-    console.log("adding task");
+    console.log("adding sub task");
     let d = new Date();
     let dateCreated = [
         d.getFullYear(),
@@ -180,37 +179,24 @@ function renderTask(task) {
     //Create HTML elements
     let item = document.createElement("li");
     item.classList.add("task-card");
-    var subtasksHTML = "";
-    for (subtask of task.subtasks)subtasksHTML += `<li class="subtask-container">
-                      <div class="row">
-                        <div class="col-1">
-                          <button class="complete-button" id="subtask-complete` + task.name + subtask.name + `"></button>
-                          <h3>` + subtask.name + `</h3>
-                        </div>
-                        <div class="col-2">
-                          <p>2h</p>
-                        </div>          
-                      </div>
-                    </li>`;
     item.innerHTML = `<div class="main-task-container" id="main-task-container` + task.name + `">
             <div class="col-1">
-              <button class="collapsible" id="collapsible` + task.name + `"><img src="../assets/images/arrow-down-sign-to-navigate.png" height="15px"></button>
+              <button class="collapsible" id="collapsible` + task.name + `"></button>
               <button class="complete-button" id="task-complete` + task.name + `"></button>
               <h3>` + task.name + `</h3>
             </div>
             <div class="col-2">
-              <p>4h</p>
+              <button class="edit-task-button" id="editTask` + task.name + `"></button>
             </div>
           </div>
           <!-- <p>Due June 23</p> -->
 
           <ul class="content" id="content` + task.name + `">
-          ` + subtasksHTML + `
           </ul>
           <div class="subtask-container">
             <div class="row">
               <div class="col-1">
-                <img src="../assets/images/plus.png" width="13px">
+                <div class="plus-image"></div>
                 <form id="subtaskForm` + task.name + `">
                   <label for="subtask"></label>
                   <input type="text" id="subtaskInput` + task.name + `" name="subtask" placeholder="add subtask">
@@ -219,10 +205,11 @@ function renderTask(task) {
             </div>          
           </div>`;
     //
+    for (subtask of task.subtasks)renderSubtask(task, subtask);
     let noTaskIndicator = document.getElementById("emptyList");
     tasklist.appendChild(item);
     // Event Listeners for DOM elements
-    var taskCard = document.getElementById("main-task-container" + task.name).addEventListener("click", function(event) {
+    var taskCard = document.getElementById("editTask" + task.name).addEventListener("click", function(event) {
         event.preventDefault();
         console.log("modal open");
         modal.open();
@@ -257,7 +244,7 @@ function renderTask(task) {
 //Render new subtask
 function renderSubtask(parentTask, task) {
     let item = document.getElementById("content" + parentTask.name);
-    item.innerHTML += `<li class="subtask-container" id="subtask-container` + parentTask.name + task.name + `">
+    item.insertAdjacentHTML("beforeend", `<li class="subtask-container" id="subtask-container` + parentTask.name + task.name + `">
                       <div class="row">
                         <div class="col-1">
                           <button class="complete-button" id="subtask-complete` + parentTask.name + task.name + `"></button>
@@ -267,16 +254,16 @@ function renderSubtask(parentTask, task) {
                           <p>2h</p>
                         </div>          
                       </div>
-                    </li>`;
+                    </li>`);
     //
-    let taskCompleteButton = document.getElementById("subtask-complete" + parentTask.name + task.name);
-    taskCompleteButton.addEventListener("click", function(event) {
+    let completeCheckbox = document.getElementById("subtask-complete" + parentTask.name + task.name);
+    completeCheckbox.addEventListener("click", function(event) {
         event.preventDefault();
         removeSubtask(parentTask, task);
     });
 }
 function removeSubtask(parentTask, task) {
-    var index = parentTask.subtasks.findIndex((item)=>item.name == task.name);
+    const index = parentTask.subtasks.findIndex((item)=>item.name == task.name);
     if (index >= 0) {
         parentTask.subtasks.splice(index, 1);
         var selectSubtask = document.getElementById("subtask-container" + parentTask.name + task.name);
