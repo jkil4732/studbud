@@ -5,8 +5,40 @@
     <meta name="viewport" content="width=device-width">
     <title>Task Form</title>
     <link href="/index.83d9161e.css" rel="stylesheet" type="text/css">
+
+    <link rel="stylesheet" href="https://unpkg.com/animate.css/animate.css" type="text/css">
+
+    <link rel="stylesheet" href="https://unpkg.com/rmodal/dist/rmodal.css" type="text/css">
+    <script src="https://unpkg.com/rmodal/dist/rmodal.js"></script>
+
   </head>
   <body>
+
+    <div id="modal" class="modal">
+      <div class="modal-dialog animate__animated">
+        <div class="modal-content">
+          <form class="form-horizontal" method="get">
+            <div class="modal-header">
+              <strong>Yep, I'm a dialog...</strong>
+            </div>
+
+            <div class="modal-body">
+              <div class="form-group">
+                <label for="dummyText" class="control-label col-xs-4">Dummy text</label>
+                <div class="input-group col-xs-7">
+                  <input type="text" name="dummyText" id="dummyText" class="form-control">
+                </div>
+              </div>
+            </div>
+
+            <div class="modal-footer">
+              <button class="btn btn-default" type="button" onclick="modal.close();">Cancel</button>
+              <button class="btn btn-primary" type="submit" onclick="modal.close();">Save</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div> 
 
     <div class="task-form-container">
       <h2>Add New Task</h2>
@@ -39,10 +71,11 @@
       <p id="emptylist">You have not added a task list yet</p>
       <ul class="task-list">
     
+        <!--
         <li class="task-card">
           <div class="main-task-container">
             <div class="col-1">
-              <button class="collapsible" id="addSubtask"><img src="/arrow-down-sign-to-navigate.adfdd59c.png" height="15px"></button>
+              <button class="collapsible" id="addSubtask"><img src="../assets/images/arrow-down-sign-to-navigate.png" height="15px"></button>
               <button class="complete-button"></button>
               <h3>Task Name</h3>
             </div>
@@ -50,7 +83,10 @@
               <p>4h</p>
             </div>
           </div>
+        -->  
+
           <!-- <p>Due June 23</p> -->
+          <!--
           <div class="content" id="placeHolder">
             <div class="subtask-container">
               <div class="row">
@@ -77,7 +113,7 @@
             <div class="subtask-container">
               <div class="row">
                 <div class="col-1">
-                  <img src="/plus.10cc236c.png" width="13px">
+                  <img src="../assets/images/plus.png" width="13px">
                   <label for="subtask"></label>
                   <input type="text" id="subtaskInput" name="subtask" placeholder="add subtask">
                 </div>
@@ -85,7 +121,7 @@
             </div>
           </div>
         </li>
-    
+        -->
       </ul>
     </div>
 

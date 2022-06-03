@@ -11,44 +11,46 @@
   </head>
 
   <body onload="template()">
-    <div class="container">
-      <div class="pomodoro-timer-container">
-        
-        <!-- Heading -->
-        <h2>Pomodoro Timer</h2>
-    
-        <!-- Main Timer -->
-        <div class="time-container">
-          <div class="col">
-            <h4 id="minutes"></h4>
-          </div>
-          <div class="col">
-            <h4>:</h4>
-          </div>
-          <div class="col">
-            <h4 id="seconds"></h4>
+
+    <div class="focusSection">  
+      <div class="container">
+        <div class="pomodoro-timer-container">
+      
+          <!-- Heading -->
+          <h2>Pomodoro Timer</h2>
+          
+          <!-- Main Timer -->
+          <div class="time-container">
+            <div class="col">
+              <h4 id="minutes"></h4>
+            </div>
+            <div class="col">
+              <h4>:</h4>
+            </div>
+            <div class="col">
+              <h4 id="seconds"></h4>
+            </div>
+            
+            <div>
+              <h3 id="done"></h3>
+            </div>
           </div>
           
-          <div>
-            <h3 id="done"></h3>
+          <!-- controls -->
+          <div class="controls-container">
+            <span id="play-button-container">
+              <span class="play-button play-button-before"></span>
+              <span class="play-button play-button-after"></span>
+            </span>
+            <button onclick="start()">Start</button>
+            <button onclick="pause()">Pause</button>
+            <button onclick="reset()">Reset</button>
           </div>
-        </div>
-        
-        <!-- controls -->
-        <div class="controls-container">
-          <span id="play-button-container">
-            <span class="play-button play-button-before"></span>
-            <span class="play-button play-button-after"></span>
-          </span>
-          <button onclick="start()">Start</button>
-          <button onclick="pause()">Pause</button>
-          <button onclick="reset()">Reset</button>
-        </div>
-        
-        <h4 id="iteration"></h4>
+          
+          <h4 id="iteration"></h4>
 
+        </div>
       </div>
-      
     </div>
   </body>
 </html>

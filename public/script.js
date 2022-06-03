@@ -142,12 +142,10 @@ function breakReset() {
 function complete() {
 
   timerPlay = false;
+  breakToggle = false;
   
   clearInterval(minutes_interval);
   clearInterval(seconds_interval);
-
-  minutes = startTime;
-  seconds = 0;
 
   document.getElementById("minutes").innerHTML = minutes;
   document.getElementById("seconds").innerHTML = "0" + seconds.toString();
@@ -164,8 +162,40 @@ function complete() {
 
 //--- TASKING ---//
 
+window.onload = function() {
+  var modal = new RModal(document.getElementById('modal'), {
+      //content: 'Abracadabra'
+      beforeOpen: function(next) {
+          console.log('beforeOpen');
+          next();
+      },
+      afterOpen: function() {
+          console.log('opened');
+      },
+      beforeClose: function(next) {
+          console.log('beforeClose');
+          next();
+      },
+      afterClose: function() {
+          console.log('closed');
+      },
+      dialogOpenClass: 'animate__slideInDown',
+      dialogCloseClass: 'animate__slideOutUp'
+      // bodyClass: 'modal-open',
+      // dialogClass: 'modal-dialog',
 
-const form = document.getElementById("taskForm");
+      // focus: true,
+      // focusElements: ['input.form-control', 'textarea', 'button.btn-primary'],
+
+      // escapeClose: true
+  });
+
+  window.modal = modal;
+
+}
+//
+
+const taskForm = document.getElementById("taskForm");
 const button = document.querySelector("#taskForm > button");
 
 var taskInput = document.getElementById("taskInput");
@@ -175,7 +205,7 @@ var notesInput = document.getElementById("notesInput");
 
 var tasklist = document.querySelector("#tasklist > ul");
 
-form.addEventListener("submit", function(event) {
+taskForm.addEventListener("submit", function(event) {
   event.preventDefault();
   let task = taskInput.value;
   let dueDate = dueDateInput.value;
@@ -185,6 +215,7 @@ form.addEventListener("submit", function(event) {
   addTask(task, dueDate, estimatedTime, taskNotes);
 });
 
+//Create main task
 function addTask(name, due, time, notes) {
   console.log("adding task");
   let d = new Date();
@@ -195,6 +226,7 @@ function addTask(name, due, time, notes) {
     time: time,
     notes: notes,
     dateCreated: dateCreated,
+    subtasks: []
   };
   taskListArray.push(task);
   console.log(task);
@@ -204,31 +236,161 @@ function addTask(name, due, time, notes) {
 let taskListArray = [];
 let taskCompletedArray = [];
 
+for (task of taskListArray) {
+  renderTask(task);
+}
+//Create subtask
+function addSubtask(name, parentTask) {
+  console.log("adding task");
+  let d = new Date();
+  let dateCreated = [d.getFullYear(), d.getMonth(), d.getFullMonth];
+  let task = {
+    name: name,
+    //time: time,
+    dateCreated: dateCreated,
+  };
+
+  parentTask.subtasks.push(task);
+  console.log(parentTask);
+  renderSubtask(parentTask, task);
+};
+
+//Render Tasks
 function renderTask(task) {
 
   //Create HTML elements
   let item = document.createElement("li");
-  item.innerHTML = "<p>" + task.name + "</p>";
+  item.classList.add("task-card");
 
+  var subtasksHTML = "";
+  for (subtask of task.subtasks) {
+    subtasksHTML += `<li class="subtask-container">
+                      <div class="row">
+                        <div class="col-1">
+                          <button class="complete-button" id="subtask-complete` + task.name + subtask.name + `"></button>
+                          <h3>` + subtask.name + `</h3>
+                        </div>
+                        <div class="col-2">
+                          <p>2h</p>
+                        </div>          
+                      </div>
+                    </li>`
+  }
+
+  item.innerHTML = `<div class="main-task-container" id="main-task-container` + task.name + `">
+            <div class="col-1">
+              <button class="collapsible" id="collapsible` + task.name + `"><img src="../assets/images/arrow-down-sign-to-navigate.png" height="15px"></button>
+              <button class="complete-button" id="task-complete` + task.name + `"></button>
+              <h3>` + task.name + `</h3>
+            </div>
+            <div class="col-2">
+              <p>4h</p>
+            </div>
+          </div>
+          <!-- <p>Due June 23</p> -->
+
+          <ul class="content" id="content` + task.name + `">
+          ` + subtasksHTML + `
+          </ul>
+          <div class="subtask-container">
+            <div class="row">
+              <div class="col-1">
+                <img src="../assets/images/plus.png" width="13px">
+                <form id="subtaskForm` + task.name + `">
+                  <label for="subtask"></label>
+                  <input type="text" id="subtaskInput` + task.name + `" name="subtask" placeholder="add subtask">
+                </form>
+              </div>
+            </div>          
+          </div>`
+
+  //
+            
   let noTaskIndicator = document.getElementById("emptyList");
 
   tasklist.appendChild(item);
 
-  // Extra Task DOM elements
-  let delButton = document.createElement("button");
-  let delButtonText = document.createTextNode("Delete Task");
-  delButton.appendChild(delButtonText);
-  item.appendChild(delButton);
 
   // Event Listeners for DOM elements
-  delButton.addEventListener("click", function(event) {
+
+  var taskCard = document.getElementById("main-task-container" + task.name).addEventListener("click", function(event) {
+    event.preventDefault();
+    console.log("modal open");
+    modal.open();
+  });
+
+  var subtaskForm = document.getElementById("subtaskForm" + task.name);
+  var subtaskInput = document.getElementById("subtaskInput" + task.name);
+
+  subtaskInput.addEventListener("keydown", function(event) {
+    if (event.key === "Enter") {
+      event.preventDefault();
+      let subtask = subtaskInput.value;
+      subtaskInput.blur();
+      subtaskForm.reset();
+
+      addSubtask(subtask, task);
+    }
+});
+
+  let taskCompleteButton = document.getElementById("task-complete" + task.name);
+
+  taskCompleteButton.addEventListener("click", function(event) {
     event.preventDefault();
     taskCompletedArray.push(task);
     item.remove();
-  })
+  });
+
+  var coll = document.getElementById("collapsible" + task.name);
+
+  coll.addEventListener("click", function() {
+    this.classList.toggle("active");
+    var content = document.getElementById("content" + task.name);
+    if (content.style.display === "block") {
+      content.style.display = "none";
+    } else {
+      content.style.display = "block";
+    }
+  });
 
   //clear the input form
-  form.reset();
+  taskForm.reset();
+};
+
+//Render new subtask
+function renderSubtask(parentTask, task) {
+  let item = document.getElementById("content" + parentTask.name);
+  item.innerHTML += `<li class="subtask-container" id="subtask-container` + parentTask.name + task.name + `">
+                      <div class="row">
+                        <div class="col-1">
+                          <button class="complete-button" id="subtask-complete` + parentTask.name + task.name + `"></button>
+                          <h3>` + task.name + `</h3>
+                        </div>
+                        <div class="col-2">
+                          <p>2h</p>
+                        </div>          
+                      </div>
+                    </li>`
+  //
+
+  let taskCompleteButton = document.getElementById("subtask-complete" + parentTask.name + task.name);
+
+  taskCompleteButton.addEventListener("click", function(event) {
+    event.preventDefault();
+    removeSubtask(parentTask, task);
+  });                    
+                                  
+};   
+
+function removeSubtask(parentTask, task) {
+  var index = parentTask.subtasks.findIndex((item) => item.name == task.name);
+   if( index >= 0) {
+     parentTask.subtasks.splice(index, 1);
+
+     var selectSubtask = document.getElementById("subtask-container" + parentTask.name + task.name);
+     selectSubtask.innerHTML = "";
+     selectSubtask.remove();
+   }
 }
 
 // Task Card Component

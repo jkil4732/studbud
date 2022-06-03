@@ -5,8 +5,40 @@
     <meta name="viewport" content="width=device-width" />
     <title>Task Form</title>
     <link href="style.css" rel="stylesheet" type="text/css" />
+
+    <link rel="stylesheet" href="https://unpkg.com/animate.css/animate.css" type="text/css" />
+
+    <link rel="stylesheet" href="https://unpkg.com/rmodal/dist/rmodal.css" type="text/css" />
+    <script type="text/javascript" src="https://unpkg.com/rmodal/dist/rmodal.js"></script>
+
   </head>
   <body>
+
+    <div id="modal" class="modal">
+      <div class="modal-dialog animate__animated">
+        <div class="modal-content">
+          <form class="form-horizontal" method="get">
+            <div class="modal-header">
+              <strong>Yep, I'm a dialog...</strong>
+            </div>
+
+            <div class="modal-body">
+              <div class="form-group">
+                <label for="dummyText" class="control-label col-xs-4">Dummy text</label>
+                <div class="input-group col-xs-7">
+                  <input type="text" name="dummyText" id="dummyText" class="form-control" />
+                </div>
+              </div>
+            </div>
+
+            <div class="modal-footer">
+              <button class="btn btn-default" type="button" onclick="modal.close();">Cancel</button>
+              <button class="btn btn-primary" type="submit" onclick="modal.close();">Save</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div> 
 
     <div class="task-form-container">
       <h2>Add New Task</h2>
@@ -44,6 +76,7 @@
       <p id="emptylist">You have not added a task list yet</p>
       <ul class="task-list">
     
+        <!--
         <li class="task-card">
           <div class="main-task-container">
             <div class="col-1">
@@ -55,7 +88,10 @@
               <p>4h</p>
             </div>
           </div>
+        -->  
+
           <!-- <p>Due June 23</p> -->
+          <!--
           <div class="content" id="placeHolder">
             <div class="subtask-container">
               <div class="row">
@@ -90,7 +126,7 @@
             </div>
           </div>
         </li>
-    
+        -->
       </ul>
     </div>
 
