@@ -14,20 +14,40 @@
   </head>
   <body>
 
+    <header class="header">
+      <h1 class="logo"><a href="/index.html">StudBud</a></h1>
+        <ul class="main-nav">
+            <li><a href="/task-list.html">Tasking</a></li>
+            <li><a href="/timer.html">Focus</a></li>
+            <li><a href="/music-player.html">Music Player</a></li>
+        </ul>
+    </header> 
+
     <div id="modal" class="modal">
       <div class="modal-dialog animate__animated">
         <div class="modal-content">
           <form class="form-horizontal" method="get">
             <div class="modal-header">
-              <strong>Yep, I'm a dialog...</strong>
+              <strong>Add New Task</strong>
             </div>
 
             <div class="modal-body">
               <div class="form-group">
-                <label for="dummyText" class="control-label col-xs-4">Dummy text</label>
-                <div class="input-group col-xs-7">
-                  <input type="text" name="dummyText" id="dummyText" class="form-control">
-                </div>
+                <label for="task">Task:</label>
+                <input type="text" id="modal-taskInput" name="task" value="">
+
+                <!-- Date input -->
+                <label for="dueDate">Due Date:</label>
+                <input type="date" id="modal-dueDateInput" name="dueDate" value="">
+
+                <!-- Completion Time -->
+                <label for="estimatedTime">Estimated Completion Time</label>
+                <input type="number" id="modal-estimatedTimeInput" name="estimatedTime" value="">
+
+                <!-- Notes -->
+                <label for="notes">Task Notes</label>
+                <input type="text" id="modal-notesInput" name="notes" value="">
+
               </div>
             </div>
 
@@ -125,7 +145,7 @@
       </ul>
     </div>
 
-    <script src="/timer.f3bd186e.js"></script>
+    <script src="/task-list.f3bd186e.js"></script>
 
   </body>
 </html>

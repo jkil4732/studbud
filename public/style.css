@@ -44,81 +44,94 @@ table {
 	border-spacing: 0;
 }
 
-/*
-.container {  display: grid;
-  grid-template-columns: 1fr;
-  grid-template-rows: 206.4px 2.3fr 0.1px;
-  gap: 0px 0px;
-  grid-auto-flow: row;
-  grid-template-areas:
-    "focus-section"
-    "task-section"
-    ".";
+/* NAV */
+/* https://codepen.io/acarlie/pen/JjPKmmV */
+
+ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
 }
 
-.focus-section {  display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
-  grid-template-rows: 0fr 1fr;
-  gap: 0px 0px;
-  grid-auto-flow: row;
-  grid-template-areas:
-    ". . ."
-    "left-float timer tasks-list";
-  grid-area: time;
+
+h2,
+h3,
+a {
+	color: #34495e;
 }
 
-.left-float { grid-area: left-float; }
-
-.timer { grid-area: timer; }
-
-.tasks-list { grid-area: tasks-list; }
-
-.task-section {  display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
-  grid-template-rows: 0.5fr 1.5fr;
-  gap: 0px 0px;
-  grid-auto-flow: row;
-  grid-template-areas:
-    "task-header task-header task-header"
-    "Nav col-1 col-2";
-  grid-area: task;
+a {
+	text-decoration: none;
 }
 
-.Nav { grid-area: Nav; }
 
-.col-1 { grid-area: col-1; }
 
-.col-2 { grid-area: col-2; }
-
-.task-header { grid-area: task-header; }
-
-/* */
-
-/*
-
-.container {
-  height: 100%;
+.logo {
+	margin: 0;
+	font-size: 1.45em;
 }
 
-.focus-section {
-  width: 100%;
-  height: 50%;
+.main-nav {
+	margin-top: 5px;
 
-  color: blue;
+}
+.logo a,
+.main-nav a {
+	padding: 10px 15px;
+	text-transform: uppercase;
+	text-align: center;
+	display: block;
 }
 
-.task-section {
-  width: 100%;
-  height: 50%;
-
-  background-color: red;
+.main-nav a {
+	color: #34495e;
+	font-size: .99em;
 }
 
-*/
+.main-nav a:hover {
+	color: #718daa;
+}
+
+.header {
+	padding-top: .5em;
+	padding-bottom: .5em;
+	border: 1px solid #a2a2a2;
+	background-color: #f4f4f4;
+	-webkit-box-shadow: 0px 0px 14px 0px rgba(0,0,0,0.75);
+	-moz-box-shadow: 0px 0px 14px 0px rgba(0,0,0,0.75);
+	box-shadow: 0px 0px 14px 0px rgba(0,0,0,0.75);
+	-webkit-border-radius: 5px;
+	-moz-border-radius: 5px;
+	border-radius: 5px;
+}
+
+
+/* ================================= 
+  Media Queries
+==================================== */
+
+@media (min-width: 769px) {
+	.header,
+	.main-nav {
+		display: flex;
+	}
+	.header {
+		flex-direction: column;
+		align-items: center;
+    width: 100%;
+	}
+}
+@media (min-width: 1025px) {
+	.header {
+		flex-direction: row;
+		justify-content: space-between;
+	}
+
+}
 
 /* TASKING */
 
-h1, h2, h3, h4, p {
+h1, h2, h3, h4, p, li {
   font-family: 'Inter', sans-serif;
   color: #303030;
 }
@@ -252,9 +265,9 @@ html, body {
 /* ------------Timer------------*/
 
 .focusSection{
-  width: 50%;
+  width: 100%;
   height: 100%;
-  background-color:#555555;
+  background-color:#dedede; 
 }
 
 .focusSection .container {
@@ -264,19 +277,63 @@ html, body {
   display: flex;
   justify-content: center;
   align-items: center;
-
-  /*transform: translate(75%, 0px);*/
 }
-
-
 
 .time-container {
 
   font-size: 150px;
   font-weight: 600;
-  color: white;
 
   display: flex;
   justify-content: start;
   align-items: center;
+}
+
+.controls-container button {
+  border: none;
+  color: white;
+  padding: 10px 10px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  transition-duration: 0.4s;
+  cursor: pointer;
+}
+
+.startButton {
+  background-color: #4CAF50; 
+  color: black; 
+  border: none;
+  border-radius: 5px;
+}
+
+.startButton:hover {
+  background-color: #595959;
+  color: white;
+}
+
+.pauseButton {
+  background-color: rgb(137, 137, 137); 
+  color: black; 
+  border: none;
+  border-radius: 5px;
+}
+
+.pauseButton:hover {
+  background-color: #595959;
+  color: white;
+}
+
+.resetButton {
+  border-radius: 5px;
+  background-color: #d35e5e; 
+  color: black; 
+  border: none;
+}
+
+.resetButton:hover {
+  background-color: #595959;
+  color: white;
 }

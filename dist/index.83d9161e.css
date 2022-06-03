@@ -34,7 +34,74 @@ table {
   border-spacing: 0;
 }
 
-h1, h2, h3, h4, p {
+ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+h2, h3, a {
+  color: #34495e;
+}
+
+a {
+  text-decoration: none;
+}
+
+.logo {
+  margin: 0;
+  font-size: 1.45em;
+}
+
+.main-nav {
+  margin-top: 5px;
+}
+
+.logo a, .main-nav a {
+  text-transform: uppercase;
+  text-align: center;
+  padding: 10px 15px;
+  display: block;
+}
+
+.main-nav a {
+  color: #34495e;
+  font-size: .99em;
+}
+
+.main-nav a:hover {
+  color: #718daa;
+}
+
+.header {
+  background-color: #f4f4f4;
+  border: 1px solid #a2a2a2;
+  border-radius: 5px;
+  padding-top: .5em;
+  padding-bottom: .5em;
+  box-shadow: 0 0 14px #000000bf;
+}
+
+@media (min-width: 769px) {
+  .header, .main-nav {
+    display: flex;
+  }
+
+  .header {
+    width: 100%;
+    flex-direction: column;
+    align-items: center;
+  }
+}
+
+@media (min-width: 1025px) {
+  .header {
+    flex-direction: row;
+    justify-content: space-between;
+  }
+}
+
+h1, h2, h3, h4, p, li {
   color: #303030;
   font-family: Inter, sans-serif;
 }
@@ -150,9 +217,9 @@ html, body {
 }
 
 .focusSection {
-  width: 50%;
+  width: 100%;
   height: 100%;
-  background-color: #555;
+  background-color: #dedede;
 }
 
 .focusSection .container {
@@ -164,12 +231,60 @@ html, body {
 }
 
 .time-container {
-  color: #fff;
   justify-content: start;
   align-items: center;
   font-size: 150px;
   font-weight: 600;
   display: flex;
+}
+
+.controls-container button {
+  color: #fff;
+  text-align: center;
+  cursor: pointer;
+  border: none;
+  margin: 4px 2px;
+  padding: 10px;
+  font-size: 16px;
+  text-decoration: none;
+  transition-duration: .4s;
+  display: inline-block;
+}
+
+.startButton {
+  color: #000;
+  background-color: #4caf50;
+  border: none;
+  border-radius: 5px;
+}
+
+.startButton:hover {
+  color: #fff;
+  background-color: #595959;
+}
+
+.pauseButton {
+  color: #000;
+  background-color: #898989;
+  border: none;
+  border-radius: 5px;
+}
+
+.pauseButton:hover {
+  color: #fff;
+  background-color: #595959;
+}
+
+.resetButton {
+  color: #000;
+  background-color: #d35e5e;
+  border: none;
+  border-radius: 5px;
+}
+
+.resetButton:hover {
+  color: #fff;
+  background-color: #595959;
 }
 
 /*# sourceMappingURL=index.83d9161e.css.map */

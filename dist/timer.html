@@ -6,11 +6,20 @@
     <title>Timer</title>
     <link href="/index.83d9161e.css" rel="stylesheet" type="text/css">
 
-    <script src="/timer.f3bd186e.js"></script>
+    <script src="/task-list.f3bd186e.js"></script>
 
   </head>
 
   <body onload="template()">
+
+    <header class="header">
+      <h1 class="logo"><a href="/index.html">StudBud</a></h1>
+        <ul class="main-nav">
+            <li><a href="/task-list.html">Tasking</a></li>
+            <li><a href="/timer.html">Focus</a></li>
+            <li><a href="/music-player.html">Music Player</a></li>
+        </ul>
+    </header> 
 
     <div class="focusSection">  
       <div class="container">
@@ -42,12 +51,12 @@
               <span class="play-button play-button-before"></span>
               <span class="play-button play-button-after"></span>
             </span>
-            <button onclick="start()">Start</button>
-            <button onclick="pause()">Pause</button>
-            <button onclick="reset()">Reset</button>
+            <button onclick="start()" class="startButton">Start</button>
+            <button onclick="pause()" class="pauseButton">Pause</button>
+            <button onclick="reset()" class="resetButton">Reset</button>
           </div>
           
-          <h4 id="iteration"></h4>
+          <h3 class="iterations" id="iteration"></h3>
 
         </div>
       </div>
