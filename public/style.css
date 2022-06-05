@@ -158,20 +158,32 @@ html, body {
 }
 
 .task-form-container {
-  margin-left: 10%;
-  margin-right: 10%;
-  padding: 15px;
+  padding: 5px 15% 5px 15%;
+  background-color:#727272
 }
 
 .task-form-container h2 {
   padding: 5px;
   margin-bottom: 10px;
+  color: white;
 }
 
 .taskForm {
   display: flex;
   justify-content: space-around;
   flex-wrap: wrap; 
+}
+
+.input-field-container {
+  display: flex;
+}
+
+.input-field-container label {
+  color:white;
+}
+
+.input-field-container input {
+  color: #727272;
 }
 
 .taskForm  .input-field {
@@ -198,13 +210,32 @@ html, body {
   background-color: #a1a7e0;
 }
 
-.task-list {
-  margin: auto;
-  padding: 50px;
-  max-width: 50%;
-  background-color: white;
+.task-list-container {
+  background-color: #ececec;
+  height: 100%;
 }
 
+.emptylist {
+  visibility: visible;
+  display: flex;
+  justify-content: center;
+}
+
+.emptylist p {
+  position: absolute;
+  margin-top: 7%;
+  font-size: 30px;
+  font-weight:600;
+  color: #7f7f7f;
+}
+
+.task-list {
+  margin-left: auto;
+  margin-right: auto;
+  padding: 50px;
+  max-width: 50%;
+  background-color: none;
+}
 
 /* COMPONENT Card Styling */
 
@@ -214,6 +245,7 @@ html, body {
   border: 2px solid #303030;
   border-radius: 15px;
   margin: 10px;
+  background-color: white;
 }
 
 .main-task-container, .subtask-container .row {
@@ -250,7 +282,7 @@ html, body {
 
 /* main-task title */
 
-.main-task-container .col-1 button:first-child {
+.main-task-container .col-1 .collapsible {
   width: 20px;
   height: 20px;
   border: 0px solid #555555;
@@ -265,6 +297,7 @@ html, body {
   display: flex;
   justify-content: start;
   align-items: center;
+  transform: rotate(0deg);
 }
 
 .edit-task-button {
@@ -291,9 +324,15 @@ html, body {
   margin-left: 25%;
 }
 
-.subtask-container .col-1 img {
+.subtask-container .col-1 .plusIcon {
+  height: 15px;
+  width: 15px;
   margin-left: 5px;
   margin-right: 10px;
+
+  background-image: url("../assets/images/plus.png");
+  background-size: 12px;
+  background-repeat: no-repeat;
 }
 .subtask-container .col-1 input {
   padding: 2px 5px 2px 0px;

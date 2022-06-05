@@ -133,6 +133,7 @@ taskForm.addEventListener("submit", function(event) {
     let taskNotes = notesInput.value;
     let estimatedTime = estimatedTimeInput.value;
     addTask(task, dueDate, estimatedTime, taskNotes);
+    isTasklistEmpty();
 });
 //Create main task
 function addTask(name, due, time, notes) {
@@ -189,14 +190,13 @@ function renderTask(task) {
               <button class="edit-task-button" id="editTask` + task.name + `"></button>
             </div>
           </div>
-          <!-- <p>Due June 23</p> -->
 
           <ul class="content" id="content` + task.name + `">
           </ul>
           <div class="subtask-container">
             <div class="row">
               <div class="col-1">
-                <div class="plus-image"></div>
+                <div class="plusIcon" id="plusIcon` + task.name + `"></div>
                 <form id="subtaskForm` + task.name + `">
                   <label for="subtask"></label>
                   <input type="text" id="subtaskInput` + task.name + `" name="subtask" placeholder="add subtask">
@@ -228,19 +228,44 @@ function renderTask(task) {
     let taskCompleteButton = document.getElementById("task-complete" + task.name);
     taskCompleteButton.addEventListener("click", function(event) {
         event.preventDefault();
-        taskCompletedArray.push(task);
+        removeTask(task);
         item.remove();
+        isTasklistEmpty();
     });
     var coll1 = document.getElementById("collapsible" + task.name);
     coll1.addEventListener("click", function() {
         this.classList.toggle("active");
         var content = document.getElementById("content" + task.name);
-        if (content.style.display === "block") content.style.display = "none";
-        else content.style.display = "block";
+        var collapsible = document.getElementById("collapsible" + task.name);
+        if (content.style.display === "block") {
+            content.style.display = "none";
+            collapsible.style.transform = "rotate(-90deg)";
+        } else {
+            content.style.display = "block";
+            collapsible.style.transform = "rotate(0deg)";
+        }
     });
     //clear the input form
     taskForm.reset();
 }
+//remove task
+function removeTask(task) {
+    const index = taskListArray.findIndex((item)=>item.name == task.name);
+    if (index >= 0) {
+        taskListArray.splice(index, 1);
+        var selectTask = document.getElementById("main-task-container" + task.name);
+        selectTask.innerHTML = "";
+        selectTask.remove();
+    }
+}
+//Check if Empty Tasklist
+function isTasklistEmpty() {
+    let message = document.getElementById("emptylist");
+    if (taskListArray.length <= 0) message.style.visibility = "visible";
+    else message.style.visibility = "hidden";
+    console.log(taskListArray.length);
+}
+isTasklistEmpty();
 //Render new subtask
 function renderSubtask(parentTask, task) {
     let item = document.getElementById("content" + parentTask.name);

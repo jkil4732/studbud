@@ -64,21 +64,29 @@
       <h2>Create New Task</h2>
 
       <form class="taskForm" id="taskForm">
-        <label for="task">Task:</label>
-        <input class="input-field" type="text" id="taskInput" name="task" value="">
+        <div class="input-field-container">
+          <label for="task">Task:</label>
+          <input class="input-field" type="text" id="taskInput" name="task" value="">
+        </div>
 
         <!-- Date input -->
-        <label for="dueDate">Due Date:</label>
-        <input class="input-field" type="date" id="dueDateInput" name="dueDate" value="">
+        <div class="input-field-container">
+          <label for="dueDate">Due Date:</label>
+          <input class="input-field" type="date" id="dueDateInput" name="dueDate" value="">
+        </div>
 
         <!-- Completion Time -->
-        <label for="estimatedTime">Estimated Completion Time</label>
-        <input class="input-field" type="number" id="estimatedTimeInput" name="estimatedTime" value="">
+        <div class="input-field-container">
+          <label for="estimatedTime">Estimated Completion Time</label>
+          <input class="input-field" type="number" id="estimatedTimeInput" name="estimatedTime" value="">
+        </div>
 
         <!-- Notes -->
-        <label for="notes">Task Notes</label>
-        <input type="text" id="notesInput" name="notes" value="">
-
+        <div class="input-field-container">
+          <label for="notes">Task Notes</label>
+          <input type="text" id="notesInput" name="notes" value="">
+        </div>
+        
         <br>
 
         <button type="submit">Submit</button>
@@ -86,9 +94,10 @@
     </div>
       
     <!--Task List -->
-
-    <div id="tasklist">
-      <p id="emptylist">You have not added a task list yet</p>
+    <div id="tasklist" class="task-list-container">
+      <div class="emptylist" id="emptylist">
+        <p>You have no added tasks</p>
+      </div> 
       <ul class="task-list">
         <!--Add tasks here with JS -->
       </ul>

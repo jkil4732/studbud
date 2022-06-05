@@ -128,12 +128,12 @@ html, body {
 }
 
 .task-form-container {
-  margin-left: 10%;
-  margin-right: 10%;
-  padding: 15px;
+  background-color: #727272;
+  padding: 5px 15%;
 }
 
 .task-form-container h2 {
+  color: #fff;
   margin-bottom: 10px;
   padding: 5px;
 }
@@ -142,6 +142,18 @@ html, body {
   flex-wrap: wrap;
   justify-content: space-around;
   display: flex;
+}
+
+.input-field-container {
+  display: flex;
+}
+
+.input-field-container label {
+  color: #fff;
+}
+
+.input-field-container input {
+  color: #727272;
 }
 
 .taskForm .input-field {
@@ -168,15 +180,36 @@ html, body {
   background-color: #a1a7e0;
 }
 
+.task-list-container {
+  height: 100%;
+  background-color: #ececec;
+}
+
+.emptylist {
+  visibility: visible;
+  justify-content: center;
+  display: flex;
+}
+
+.emptylist p {
+  color: #7f7f7f;
+  margin-top: 7%;
+  font-size: 30px;
+  font-weight: 600;
+  position: absolute;
+}
+
 .task-list {
   max-width: 50%;
-  background-color: #fff;
-  margin: auto;
+  background-color: none;
+  margin-left: auto;
+  margin-right: auto;
   padding: 50px;
 }
 
 .task-card {
   width: 100%;
+  background-color: #fff;
   border: 2px solid #303030;
   border-radius: 15px;
   margin: 10px;
@@ -215,7 +248,7 @@ html, body {
   background-color: #7a90ff;
 }
 
-.main-task-container .col-1 button:first-child {
+.main-task-container .col-1 .collapsible {
   width: 20px;
   height: 20px;
   cursor: pointer;
@@ -230,6 +263,7 @@ html, body {
   margin-right: 10px;
   padding: 0;
   display: flex;
+  transform: rotate(0deg);
 }
 
 .edit-task-button {
@@ -254,7 +288,12 @@ html, body {
   margin-left: 25%;
 }
 
-.subtask-container .col-1 img {
+.subtask-container .col-1 .plusIcon {
+  height: 15px;
+  width: 15px;
+  background-image: url("plus.10cc236c.png");
+  background-repeat: no-repeat;
+  background-size: 12px;
   margin-left: 5px;
   margin-right: 10px;
 }
